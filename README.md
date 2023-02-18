@@ -1,5 +1,5 @@
 <h1 align="center">iExpense App 💵</h1>
-<h3 align="center">Easy way to too how muck you spend your money 😊</h3>
+<h3 align="center">Easy way to control how muck you spend money 😊</h3>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/98255061/219828823-7eabcc44-4290-4bd5-a555-08f7ce3badd7.png" width="200" />
