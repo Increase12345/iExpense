@@ -20,11 +20,14 @@ struct AddView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                
+                // Background
                 LinearGradient(gradient: Gradient(colors: [.yellow, .white]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
                     .opacity(0.9)
-                
                 VStack(spacing: 50) {
+                    
+                    // User input (name of item)
                     TextField("Name Of Expense", text: $name)
                         .font(.title3)
                         .padding(.top, 50)
@@ -32,6 +35,7 @@ struct AddView: View {
                         .textFieldStyle(.roundedBorder)
                         .shadow(radius: 5)
                     
+                    // Pick account
                     Picker("Type", selection: $type) {
                         ForEach(types, id: \.self) {
                             Text($0)
@@ -39,15 +43,16 @@ struct AddView: View {
                     }
                     .pickerStyle(.segmented)
                     
+                    // User input (money amount)
                     TextField("Amount", value: $amount, format: .currency(code: "USD"))
                         .font(.title3)
                         .bold()
                         .multilineTextAlignment(.center)
                         .textFieldStyle(.roundedBorder)
                         .shadow(radius: 5)
-                    
                         .navigationTitle("Add new expense")
                     
+                    // Button to save changes
                     Button("Save") {
                         let expens = ExpensesItem(name: name, type: type, amount: amount)
                         expenses.items.append(expens)

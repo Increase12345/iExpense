@@ -14,16 +14,24 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
+                
+                // Working space for items
                 ForEach(expenses.items) { item in
                     HStack {
                         VStack(alignment: .leading) {
+                            
+                            // Item name
                             Text(item.name)
                                 .font(.title3)
+                            
+                            // Item account
                             Text(item.type)
                                 .foregroundColor(.secondary)
                                 .font(.footnote)
                         }
                         Spacer()
+                        
+                        // Item amount
                         Text("\(item.amount, format: .currency(code: "USD"))")
                             .foregroundColor(item.amount <= 10 ? .green : item.amount <= 50 ? .indigo : item.amount <= 100 ? .yellow : .red)
                             .font(.title3)
@@ -37,6 +45,8 @@ struct ContentView: View {
             .background(LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing).opacity(0.8))
             .shadow(radius: 5)
             .navigationTitle("iExpense")
+            
+            // Tot Plus and Edit buttons
             .toolbar {
                 EditButton()
                     .bold()
@@ -51,11 +61,14 @@ struct ContentView: View {
                 })
             }
         }
+        
+        // View for adding items
         .sheet(isPresented: $showingAddExpense, content: {
             AddView(expenses: expenses)
         })
     }
     
+    // Method for removing items
     func removeItems(of offset: IndexSet) {
         expenses.items.remove(atOffsets: offset)
     }
