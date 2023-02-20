@@ -37,8 +37,18 @@ struct ContentView: View {
                             .font(.title3)
                             .bold()
                     }
+                    
                 }
                 .onDelete(perform: removeItems(of:))
+                
+                // Showing total amount
+                HStack {
+                    Spacer()
+                    Text("Total:")
+                    Text(String("\(expenses.items.map({$0.amount}).reduce(0, +))"))
+                }
+                .font(.title3)
+                .bold()
             }
             .padding(.top, 1)
             .scrollContentBackground(.hidden)
